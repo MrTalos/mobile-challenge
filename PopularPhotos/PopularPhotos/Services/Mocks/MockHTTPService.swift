@@ -9,10 +9,12 @@ internal enum MockError: Error {
 
 internal class MockHTTPService: HTTPService {
     
-    var mock: [String: DataResponse<Any>]!
+    var mock: [String: DataResponse<Any>?]!
     
-    func createJsonResponse(jsonString: String) -> DataResponse<Any> {
-        if let parsed = parseJsonString(str: jsonString) {
+    var validateRequest: ((URLRequestConvertible) -> ())?
+    
+    func createJsonResponse(jsonString: String?) -> DataResponse<Any> {
+        if let jsonString = jsonString, let parsed = parseJsonString(str: jsonString) {
             return createResponse(result: Result<Any>.success(parsed))
         } else {
             return createErrorResponse(error: .serverError)
@@ -29,7 +31,10 @@ internal class MockHTTPService: HTTPService {
     
     func request(urlRequest: URLRequestConvertible, jsonHandler: @escaping (DataResponse<Any>) -> Void) {
         do {
-            if let key = try urlRequest.asURLRequest().url?.absoluteString, let response = mock[key] {
+            validateRequest?(urlRequest)
+            if let url = try urlRequest.asURLRequest().url?.absoluteString,
+                let key = url.components(separatedBy: "?").first,
+                let response = mock[key] as? DataResponse<Any> {
                 jsonHandler(response)
                 return
             }
