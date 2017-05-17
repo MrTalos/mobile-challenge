@@ -20,5 +20,28 @@ func parseJsonObject(dict: [String: Any]) -> String? {
     } catch _ {
     }
     return nil
+}
+
+func XCTExpectEqual<T: Equatable>(actual: T?, expected: T?) {
+    XCTAssert(actual == expected, "Actual: \(String(describing: actual))")
+}
+
+extension XCTestCase {
+    func getData(fromFile fileName: String, _ type: String) -> Data? {
+        let bundle = Bundle(for: type(of: self))
+        if let path = bundle.path(forResource: fileName, ofType: type) {
+            do {
+                return try Data(contentsOf: URL(fileURLWithPath: path))
+            } catch _ {}
+        }
+        return nil
+    }
+    
+    func getString(fromFile fileName: String, _ type: String) -> String? {
+        guard let data = getData(fromFile: fileName, type) else {
+            return nil
+        }
+        return String(data: data, encoding: String.Encoding.utf8)
+    }
     
 }
