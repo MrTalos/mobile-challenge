@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00BF94DE547BD93E7361A49B /* Pods_PopularPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ED4E4EEF143C906E8B728 /* Pods_PopularPhotos.framework */; };
 		1DF55D5F841A5118EBFE0E14 /* Pods_shared_pods_PopularPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5266BE5F5ADB9467A62B9D /* Pods_shared_pods_PopularPhotos.framework */; };
 		610783321ECBE98900785813 /* APIGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610783311ECBE98900785813 /* APIGeneral.swift */; };
 		610783341ECBE9D400785813 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610783331ECBE9D400785813 /* HTTPService.swift */; };
 		6107833D1ECBEA2800785813 /* MockHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6107833B1ECBEA2800785813 /* MockHTTPService.swift */; };
+		61093B351ECD0CFF0031662E /* MockHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B2F1ECD0CFF0031662E /* MockHomeViewModel.swift */; };
+		61093B3E1ECD519E0031662E /* FullscreenPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B3D1ECD519E0031662E /* FullscreenPhoto.swift */; };
+		61093B401ECD5FCF0031662E /* MockHomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B3F1ECD5FCF0031662E /* MockHomeViewModelDelegate.swift */; };
+		61093B421ECD60170031662E /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B411ECD60170031662E /* HomeViewModelTests.swift */; };
+		61093B431ECD68A10031662E /* GetPhotosSuccessJson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 617295131ECC052400F5D5BA /* GetPhotosSuccessJson.txt */; };
 		61677B3A1ECBE7BB00D4260A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61677B391ECBE7BB00D4260A /* AppDelegate.swift */; };
 		61677B411ECBE7BB00D4260A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61677B401ECBE7BB00D4260A /* Assets.xcassets */; };
 		61677B441ECBE7BB00D4260A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61677B421ECBE7BB00D4260A /* LaunchScreen.storyboard */; };
@@ -20,13 +24,11 @@
 		617294F61ECBF5B300F5D5BA /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617294F41ECBF5B300F5D5BA /* PhotoService.swift */; };
 		617295051ECBF73C00F5D5BA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617295041ECBF73C00F5D5BA /* Localization.swift */; };
 		6172950D1ECBF7E300F5D5BA /* MockPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172950C1ECBF7E300F5D5BA /* MockPhotoService.swift */; };
-		617295101ECBF82700F5D5BA /* PhotoServiceImplTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172950F1ECBF82700F5D5BA /* PhotoServiceImplTest.swift */; };
-		617295141ECC052400F5D5BA /* GetPhotosSuccessJson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 617295131ECC052400F5D5BA /* GetPhotosSuccessJson.txt */; };
+		617295101ECBF82700F5D5BA /* PhotoServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172950F1ECBF82700F5D5BA /* PhotoServiceTest.swift */; };
 		617295171ECC188500F5D5BA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 617295161ECC188500F5D5BA /* Home.storyboard */; };
 		6172951D1ECC19F100F5D5BA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172951A1ECC19F100F5D5BA /* HomeViewController.swift */; };
 		6172951E1ECC19F100F5D5BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172951B1ECC19F100F5D5BA /* HomeViewModel.swift */; };
 		6172951F1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172951C1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift */; };
-		66249A4F69CF4B50164A8E17 /* Pods_shared_pods_PopularPhotosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90198D81B95339159DE03E77 /* Pods_shared_pods_PopularPhotosTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,13 +43,15 @@
 
 /* Begin PBXFileReference section */
 		1EDDF565E0198FEA80714B4D /* Pods-shared_pods-PopularPhotosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotosTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotosTests/Pods-shared_pods-PopularPhotosTests.release.xcconfig"; sourceTree = "<group>"; };
-		33FC7222C769BA3FF68CCE02 /* Pods-PopularPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopularPhotos.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PopularPhotos/Pods-PopularPhotos.debug.xcconfig"; sourceTree = "<group>"; };
-		38EE3C5DA82213561B7CBCC7 /* Pods-PopularPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopularPhotos.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PopularPhotos/Pods-PopularPhotos.release.xcconfig"; sourceTree = "<group>"; };
 		5C5266BE5F5ADB9467A62B9D /* Pods_shared_pods_PopularPhotos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shared_pods_PopularPhotos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		610783311ECBE98900785813 /* APIGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGeneral.swift; sourceTree = "<group>"; };
 		610783331ECBE9D400785813 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		6107833B1ECBEA2800785813 /* MockHTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHTTPService.swift; sourceTree = "<group>"; };
 		6107833E1ECBEDE800785813 /* Pods_PopularPhotos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_PopularPhotos.framework; path = "../../../Library/Developer/Xcode/DerivedData/PopularPhotos-gmqlofbdqcbkalfwljpdbcjqnkmt/Build/Products/Debug-iphonesimulator/Pods_PopularPhotos.framework"; sourceTree = "<group>"; };
+		61093B2F1ECD0CFF0031662E /* MockHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeViewModel.swift; sourceTree = "<group>"; };
+		61093B3D1ECD519E0031662E /* FullscreenPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenPhoto.swift; sourceTree = "<group>"; };
+		61093B3F1ECD5FCF0031662E /* MockHomeViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeViewModelDelegate.swift; sourceTree = "<group>"; };
+		61093B411ECD60170031662E /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		61677B361ECBE7BB00D4260A /* PopularPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61677B391ECBE7BB00D4260A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61677B401ECBE7BB00D4260A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,16 +64,14 @@
 		617294F41ECBF5B300F5D5BA /* PhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		617295041ECBF73C00F5D5BA /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		6172950C1ECBF7E300F5D5BA /* MockPhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPhotoService.swift; sourceTree = "<group>"; };
-		6172950F1ECBF82700F5D5BA /* PhotoServiceImplTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoServiceImplTest.swift; sourceTree = "<group>"; };
+		6172950F1ECBF82700F5D5BA /* PhotoServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoServiceTest.swift; sourceTree = "<group>"; };
 		617295131ECC052400F5D5BA /* GetPhotosSuccessJson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GetPhotosSuccessJson.txt; sourceTree = "<group>"; };
 		617295161ECC188500F5D5BA /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6172951A1ECC19F100F5D5BA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6172951B1ECC19F100F5D5BA /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6172951C1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
-		90198D81B95339159DE03E77 /* Pods_shared_pods_PopularPhotosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shared_pods_PopularPhotosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91543E9A0DDBD639FBA45203 /* Pods-shared_pods-PopularPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotos.release.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotos/Pods-shared_pods-PopularPhotos.release.xcconfig"; sourceTree = "<group>"; };
 		ACA19C078241BC0BA2AA5F99 /* Pods-shared_pods-PopularPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotos.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotos/Pods-shared_pods-PopularPhotos.debug.xcconfig"; sourceTree = "<group>"; };
-		BC6ED4E4EEF143C906E8B728 /* Pods_PopularPhotos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopularPhotos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE69E4D29D8CA593FA9D0E4B /* Pods-shared_pods-PopularPhotosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotosTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotosTests/Pods-shared_pods-PopularPhotosTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00BF94DE547BD93E7361A49B /* Pods_PopularPhotos.framework in Frameworks */,
 				1DF55D5F841A5118EBFE0E14 /* Pods_shared_pods_PopularPhotos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66249A4F69CF4B50164A8E17 /* Pods_shared_pods_PopularPhotosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +137,49 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		61093B291ECD0CFF0031662E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				61093B2A1ECD0CFF0031662E /* Home */,
+			);
+			name = Screens;
+			path = PopularPhotos/Screens;
+			sourceTree = SOURCE_ROOT;
+		};
+		61093B2A1ECD0CFF0031662E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				61093B2E1ECD0CFF0031662E /* Mocks */,
+				61093B311ECD0CFF0031662E /* Tests */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		61093B2E1ECD0CFF0031662E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				61093B2F1ECD0CFF0031662E /* MockHomeViewModel.swift */,
+				61093B3F1ECD5FCF0031662E /* MockHomeViewModelDelegate.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		61093B311ECD0CFF0031662E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				61093B411ECD60170031662E /* HomeViewModelTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		61093B3C1ECD51880031662E /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				61093B3D1ECD519E0031662E /* FullscreenPhoto.swift */,
+			);
+			path = PhotoDetail;
+			sourceTree = "<group>";
+		};
 		61677B2D1ECBE7BB00D4260A = {
 			isa = PBXGroup;
 			children = (
@@ -176,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				617295061ECBF7BB00F5D5BA /* Models */,
-				617294F71ECBF66000F5D5BA /* Home */,
+				61093B291ECD0CFF0031662E /* Screens */,
 				610783351ECBEA0400785813 /* Services */,
 				61677B501ECBE7BC00D4260A /* Info.plist */,
 				617294D81ECBF02F00F5D5BA /* TestHelper.swift */,
@@ -187,33 +230,10 @@
 		617294DD1ECBF50300F5D5BA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				61093B3C1ECD51880031662E /* PhotoDetail */,
 				617295151ECC187500F5D5BA /* Home */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		617294F71ECBF66000F5D5BA /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				617294FB1ECBF66000F5D5BA /* Mocks */,
-				617294FE1ECBF66000F5D5BA /* Tests */,
-			);
-			name = Home;
-			path = PopularPhotos/Screens/Home;
-			sourceTree = SOURCE_ROOT;
-		};
-		617294FB1ECBF66000F5D5BA /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
-		617294FE1ECBF66000F5D5BA /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		617295061ECBF7BB00F5D5BA /* Models */ = {
@@ -237,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				617295131ECC052400F5D5BA /* GetPhotosSuccessJson.txt */,
-				6172950F1ECBF82700F5D5BA /* PhotoServiceImplTest.swift */,
+				6172950F1ECBF82700F5D5BA /* PhotoServiceTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -256,8 +276,6 @@
 		CD3F8032F7E941B9EAD7A673 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				33FC7222C769BA3FF68CCE02 /* Pods-PopularPhotos.debug.xcconfig */,
-				38EE3C5DA82213561B7CBCC7 /* Pods-PopularPhotos.release.xcconfig */,
 				ACA19C078241BC0BA2AA5F99 /* Pods-shared_pods-PopularPhotos.debug.xcconfig */,
 				91543E9A0DDBD639FBA45203 /* Pods-shared_pods-PopularPhotos.release.xcconfig */,
 				FE69E4D29D8CA593FA9D0E4B /* Pods-shared_pods-PopularPhotosTests.debug.xcconfig */,
@@ -270,9 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				6107833E1ECBEDE800785813 /* Pods_PopularPhotos.framework */,
-				BC6ED4E4EEF143C906E8B728 /* Pods_PopularPhotos.framework */,
 				5C5266BE5F5ADB9467A62B9D /* Pods_shared_pods_PopularPhotos.framework */,
-				90198D81B95339159DE03E77 /* Pods_shared_pods_PopularPhotosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -333,7 +349,7 @@
 				TargetAttributes = {
 					61677B351ECBE7BB00D4260A = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = YTVHQ2XF8L;
+						DevelopmentTeam = FYYXX23BQ4;
 						ProvisioningStyle = Automatic;
 					};
 					61677B491ECBE7BC00D4260A = {
@@ -378,7 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				617295141ECC052400F5D5BA /* GetPhotosSuccessJson.txt in Resources */,
+				61093B431ECD68A10031662E /* GetPhotosSuccessJson.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61093B3E1ECD519E0031662E /* FullscreenPhoto.swift in Sources */,
 				617294F61ECBF5B300F5D5BA /* PhotoService.swift in Sources */,
 				6172951F1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift in Sources */,
 				617294F51ECBF5B300F5D5BA /* Photo.swift in Sources */,
@@ -498,8 +515,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61093B351ECD0CFF0031662E /* MockHomeViewModel.swift in Sources */,
+				61093B421ECD60170031662E /* HomeViewModelTests.swift in Sources */,
 				617294D91ECBF02F00F5D5BA /* TestHelper.swift in Sources */,
-				617295101ECBF82700F5D5BA /* PhotoServiceImplTest.swift in Sources */,
+				61093B401ECD5FCF0031662E /* MockHomeViewModelDelegate.swift in Sources */,
+				617295101ECBF82700F5D5BA /* PhotoServiceTest.swift in Sources */,
 				6172950D1ECBF7E300F5D5BA /* MockPhotoService.swift in Sources */,
 				6107833D1ECBEA2800785813 /* MockHTTPService.swift in Sources */,
 			);
@@ -568,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -613,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -627,7 +647,7 @@
 			baseConfigurationReference = ACA19C078241BC0BA2AA5F99 /* Pods-shared_pods-PopularPhotos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YTVHQ2XF8L;
+				DEVELOPMENT_TEAM = FYYXX23BQ4;
 				INFOPLIST_FILE = PopularPhotos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.vinceliang.PopularPhotos;
@@ -641,7 +661,7 @@
 			baseConfigurationReference = 91543E9A0DDBD639FBA45203 /* Pods-shared_pods-PopularPhotos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YTVHQ2XF8L;
+				DEVELOPMENT_TEAM = FYYXX23BQ4;
 				INFOPLIST_FILE = PopularPhotos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.vinceliang.PopularPhotos;

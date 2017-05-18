@@ -4,7 +4,7 @@
 import XCTest
 import Alamofire
 
-class PhotoServiceImplTest: XCTestCase {
+class PhotoServiceTest: XCTestCase {
     
     let mockService = MockHTTPService()
     var photoService: PhotoServiceImpl!
@@ -12,7 +12,6 @@ class PhotoServiceImplTest: XCTestCase {
     override func setUp() {
         super.setUp()
         photoService = PhotoServiceImpl(httpService: mockService)
-        
     }
     
     func testItSendsCorrectRequests() {
@@ -28,13 +27,12 @@ class PhotoServiceImplTest: XCTestCase {
                 XCTFail("url is empty")
                 return
             }
-            XCTAssertNotNil(url.range(of: "exclude%5B%5D=Nude"))
-            XCTAssertNotNil(url.range(of: "exclude%5B%5D=random"))
+            XCTAssertNotNil(url.range(of: "exclude=Nude%2Crandom"))
             XCTAssertNotNil(url.range(of: "feature=not_popular"))
             XCTAssertNotNil(url.range(of: "page=2"))
         }
         
-        photoService.getPhotos(feature: "not_popular", page: 2, exclude: ["Nude", "random"]) { (photos: [Photo]) in
+        photoService.getPhotos(feature: "not_popular", page: 2, exclude: "Nude,random") { (photos: [Photo]) in
             XCTExpectEqual(actual: photos.count, expected: 0)
         }
         
@@ -47,10 +45,19 @@ class PhotoServiceImplTest: XCTestCase {
                 mockService.createJsonResponse(jsonString: getString(fromFile: "GetPhotosSuccessJson", "txt"))
         ]
         
-        photoService.getPhotos(feature: "popular", page: 1, exclude: []) { (photos: [Photo]) in
+        photoService.getPhotos(feature: "popular", page: 1, exclude: nil) { (photos: [Photo]) in
             XCTExpectEqual(actual: photos.count, expected: 25)
             XCTExpectEqual(actual: photos[0].id, expected: 212189651)
             XCTExpectEqual(actual: photos[22].id, expected: 212184499)
+        }
+        
+        mockService.mock = [
+            "https://api.500px.com/v1/photos":
+                mockService.createJsonResponse(jsonString: "{}")
+        ]
+        
+        photoService.getPhotos(feature: "popular", page: 1, exclude: nil) { (photos: [Photo]) in
+            XCTExpectEqual(actual: photos.count, expected: 0)
         }
     }
     

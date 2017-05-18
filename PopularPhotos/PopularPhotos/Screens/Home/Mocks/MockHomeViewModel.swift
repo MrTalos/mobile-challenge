@@ -15,11 +15,11 @@ class MockHomeViewModel: HomeViewModel {
         return CGSize(width: 1960, height: 1080)
     }
     
-    func getThumbnailUrl(index: Int) -> String {
+    func getPhotoUrl(index: Int) -> String {
         return mock[index]
     }
     
-    func getPhotoUrl(index: Int) -> String {
+    func getPhotoName(index: Int) -> String {
         return mock[index]
     }
     

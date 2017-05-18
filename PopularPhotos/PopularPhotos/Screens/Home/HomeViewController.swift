@@ -1,11 +1,15 @@
 
 import UIKit
 
+import ESPullToRefresh
 import GreedoLayout
+import NYTPhotoViewer
 import SDWebImage
 
 protocol HomeViewModelDelegate {
-    
+    func refreshDidEnd()
+    func loadingMoreDidEnd()
+    func updateImages(oldImageCount: Int, changeStart: Int, changeEnd: Int)
 }
 
 class HomeViewModelDelegateImpl: HomeViewModelDelegate {
@@ -14,6 +18,26 @@ class HomeViewModelDelegateImpl: HomeViewModelDelegate {
     
     init(controller: HomeCollectionViewController) {
         self.controller = controller
+    }
+    
+    func refreshDidEnd() {
+        controller?.collectionView?.es_stopPullToRefresh()
+    }
+    
+    func loadingMoreDidEnd() {
+        controller?.collectionView?.es_stopLoadingMore()
+    }
+    
+    func updateImages(oldImageCount: Int, changeStart: Int, changeEnd: Int) {
+        let indexPaths = (changeStart..<changeEnd).map{
+            IndexPath(row: $0, section: 0)
+        }
+        controller?.layout.clearCache()
+        if oldImageCount == changeStart {
+            controller?.collectionView?.insertItems(at: indexPaths)
+        } else {
+            controller?.collectionView?.reloadData()
+        }
     }
     
 }
@@ -32,12 +56,15 @@ class HomeCollectionViewController: UICollectionViewController {
     
     var layout: GreedoCollectionViewLayout!
     
-    var viewModel: HomeViewModel!
+    var homeViewModel: HomeViewModel!
+    
+    weak var focusedFullscreen: FullscreenPhoto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         setupViewModel()
+        setupPullToRefresh()
     }
     
     private func setupLayout() {
@@ -47,7 +74,17 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     
     private func setupViewModel() {
-        viewModel = HomeViewModelImpl(feature: "popular", delegate: HomeViewModelDelegateImpl(controller: self))
+        homeViewModel = HomeViewModelImpl(feature: "popular", delegate: HomeViewModelDelegateImpl(controller: self))
+        homeViewModel.loadMorePhotos()
+    }
+    
+    private func setupPullToRefresh() {
+        collectionView?.es_addPullToRefresh {
+            self.homeViewModel.refreshPhotos()
+        }
+        collectionView?.es_addInfiniteScrolling {
+            self.homeViewModel.loadMorePhotos()
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -66,15 +103,13 @@ class HomeCollectionViewController: UICollectionViewController {
         }
         layout.rowMaximumHeight = maxHeight
         
-        let visibleIndexpaths = collectionView.indexPathsForVisibleItems
-        if let first = visibleIndexpaths.first, first.row > 0 {
-            layout.clearCache(after: IndexPath(row: first.row - 1, section: first.section))
-        } else {
-            layout.clearCache()
-        }
-        
+        layout.clearCache()
         collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
         
+        if let fullscreen = focusedFullscreen {
+            let index = IndexPath(row: fullscreen.index, section: 0)
+            collectionView.scrollToItem(at: index, at: .centeredVertically, animated: true)
+        }
     }
     
 }
@@ -88,15 +123,20 @@ extension HomeCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getPhotosCount()
+        return homeViewModel.getPhotosCount()
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath)
         if let cell = cell as? PhotoThumbnailCollectionViewCell,
-                let url = URL(string: viewModel.getThumbnailUrl(index: indexPath.row)) {
-            cell.image.sd_setImage(with: url, placeholderImage: UIImage(named: "thumbnail-placeholder"))
+                let url = URL(string: homeViewModel.getPhotoUrl(index: indexPath.row)) {
+            cell.image.sd_setImage(
+                with: url, placeholderImage: UIImage(named: "500px_mark_light"),
+                options: .continueInBackground,
+                completed: { (image: UIImage?, error: Error?, cacheType: SDImageCacheType, requestUrl:URL?) in
+                cell.imageObj = image
+            })
         }
         return cell
     }
@@ -108,7 +148,7 @@ extension HomeCollectionViewController {
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        displayPhoto(indexPath: indexPath)
     }
     
 }
@@ -118,7 +158,8 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return layout.sizeForPhoto(at: indexPath)
+        let test = layout.sizeForPhoto(at: indexPath)
+        return test
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -141,7 +182,32 @@ extension HomeCollectionViewController: GreedoCollectionViewLayoutDataSource {
     
     func greedoCollectionViewLayout(_ layout: GreedoCollectionViewLayout!,
                                     originalImageSizeAt indexPath: IndexPath!) -> CGSize {
-        return viewModel.getPhotoSize(index: indexPath.row)
+        return homeViewModel.getPhotoSize(index: indexPath.row)
+    }
+    
+}
+
+extension HomeCollectionViewController: NYTPhotosViewControllerDelegate {
+    
+    // MARK: - NYTPhoto related
+    
+    fileprivate func displayPhoto(indexPath: IndexPath) {
+        guard let cell = collectionView?.cellForItem(at: indexPath) as? PhotoThumbnailCollectionViewCell,
+                let loadedImage = cell.imageObj else {
+            return
+        }
+        let detailed = FullscreenPhoto(image: loadedImage, index: indexPath.row,
+                                       info: homeViewModel.getPhotoName(index: indexPath.row))
+        let photosViewController = NYTPhotosViewController(photos: [detailed], initialPhoto: detailed, delegate: self)
+        present(photosViewController, animated: true, completion: nil)
+        focusedFullscreen = detailed
+    }
+    
+    func photosViewController(_ photosViewController: NYTPhotosViewController, referenceViewFor photo: NYTPhoto) -> UIView? {
+        guard let photo = photo as? FullscreenPhoto else {
+            return nil
+        }
+        return collectionView?.cellForItem(at: IndexPath(row: photo.index, section: 0))
     }
     
 }

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,6 @@
         <!--Home Collection View Controller-->
         <scene sceneID="Kzk-Id-xW8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g8d-tK-ai7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="ucY-wR-E84" customClass="HomeCollectionViewController" customModule="PopularPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vqs-LD-8vM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -31,11 +31,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t2Z-9U-IoT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t2Z-9U-IoT">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="t2Z-9U-IoT" secondAttribute="bottom" id="9nD-mk-egN"/>
                                     <constraint firstAttribute="trailing" secondItem="t2Z-9U-IoT" secondAttribute="trailing" id="S8f-l3-6Ks"/>
@@ -54,6 +55,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="xVt-Fh-jkX"/>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8d-tK-ai7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-359" y="124"/>
         </scene>

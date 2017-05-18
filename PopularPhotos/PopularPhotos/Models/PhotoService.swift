@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 
 protocol PhotoService {
-    func getPhotos(feature: String, page: Int, exclude: [String], onComplete: @escaping ([Photo]) -> ())
+    func getPhotos(feature: String, page: Int, exclude: String?, onComplete: @escaping ([Photo]) -> ())
 }
 
 class PhotoServiceImpl: PhotoService {
@@ -17,14 +17,16 @@ class PhotoServiceImpl: PhotoService {
         service = httpService
     }
     
-    func getPhotos(feature: String, page: Int, exclude: [String], onComplete: @escaping ([Photo]) -> ()) {
+    func getPhotos(feature: String, page: Int, exclude: String?, onComplete: @escaping ([Photo]) -> ()) {
         
         let request = PhotosRouter.photos(feature: feature, page: page, rpp: 25, exclude: exclude, imageSizes: [3, 4])
+        debugPrint(PhotoServiceImpl.TAG, request.urlRequest?.url?.absoluteString ?? "nil")
         
-        service.request(urlRequest: request) { (response: DataResponse<Any>) in
+        self.service.request(urlRequest: request) { (response: DataResponse<Any>) in
+            
             switch response.result {
-                
             case .success(let value):
+                debugPrint(PhotoServiceImpl.TAG, value)
                 if let value = value as? [String: Any],
                     let photos = value["photos"] as? [[String: Any]] {
                     onComplete(self.parsePhotos(photosJson: photos))
@@ -59,46 +61,33 @@ class PhotoServiceImpl: PhotoService {
 
 private enum PhotosRouter: URLRequestConvertible {
     
-    case photos(feature: String, page: Int?, rpp: Int?, exclude: [String]?, imageSizes: [Int]?)
+    case photos(feature: String, page: Int?, rpp: Int?, exclude: String?, imageSizes: [Int]?)
     
-    var method: HTTPMethod {
+    private var method: HTTPMethod {
         switch self {
         case .photos:
             return .get
         }
     }
     
-    var path: String {
+    private var path: String {
         switch self {
         case .photos:
             return "photos"
         }
     }
     
-    var encoding: URLEncoding {
+    private var encoding: URLEncoding {
         switch self {
         case .photos:
-            return URLEncoding.default
+            return URLEncoding.queryString
         }
     }
     
-    var parameters: Parameters {
+    private var parameters: Parameters {
         switch self {
         case .photos(let feature, let page, let rpp, let exclude, let imageSizes):
-            var params: [String: Any] = ["feature": feature]
-            if let page = page {
-                params["page"] = page
-            }
-            if let rpp = rpp {
-                params["rpp"] = rpp
-            }
-            if let exclude = exclude {
-                params["exclude"] = exclude
-            }
-            if let imageSizes = imageSizes {
-                params["image_size"] = imageSizes
-            }
-            return params
+            return createParams(feature: feature, page: page, rpp: rpp, exclude: exclude, imageSizes: imageSizes)
         }
     }
     
@@ -108,6 +97,24 @@ private enum PhotosRouter: URLRequestConvertible {
         request.httpMethod = method.rawValue
         request = try encoding.encode(request, with: APIGeneral.attachConsumerKey(parameters))
         return request
+    }
+    
+    private func createParams(feature: String, page: Int?, rpp: Int?,
+                              exclude: String?, imageSizes: [Int]?) -> [String: Any] {
+        var params: [String: Any] = ["feature": feature]
+        if let page = page {
+            params["page"] = page
+        }
+        if let rpp = rpp {
+            params["rpp"] = rpp
+        }
+        if let exclude = exclude {
+            params["exclude"] = exclude
+        }
+        if let imageSizes = imageSizes {
+            params["image_size"] = imageSizes
+        }
+        return params
     }
     
 }
