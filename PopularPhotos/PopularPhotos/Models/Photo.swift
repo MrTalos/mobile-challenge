@@ -17,4 +17,5 @@ class Photo {
         self.imageUrl = imageUrl
         size = CGSize(width: width, height: height)
     }
+    
 }
