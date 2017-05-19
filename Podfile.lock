@@ -10,9 +10,19 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4.0)
   - ESPullToRefresh (~> 2.6.0)
-  - GreedoLayout (~> 1.2.0)
-  - ImageViewer
+  - GreedoLayout (from `https://github.com/zaully/greedo-layout-for-ios.git`, commit `c4cf3c29076bf2277cbbcb3d439ab98a0f9aeb70`)
+  - ImageViewer (~> 4.1.0)
   - SDWebImage (~> 3.8.2)
+
+EXTERNAL SOURCES:
+  GreedoLayout:
+    :commit: c4cf3c29076bf2277cbbcb3d439ab98a0f9aeb70
+    :git: https://github.com/zaully/greedo-layout-for-ios.git
+
+CHECKOUT OPTIONS:
+  GreedoLayout:
+    :commit: c4cf3c29076bf2277cbbcb3d439ab98a0f9aeb70
+    :git: https://github.com/zaully/greedo-layout-for-ios.git
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -21,6 +31,6 @@ SPEC CHECKSUMS:
   ImageViewer: 163e5832e0a09e31a3e3482cce6e5e9029356174
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 94869b38ea29def57e0ab85e0b074aa7e9c23efc
+PODFILE CHECKSUM: 79cf3262cf40cd530853066c0e306d89753fd4d6
 
 COCOAPODS: 1.2.1
