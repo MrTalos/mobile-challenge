@@ -135,8 +135,7 @@ extension HomeCollectionViewController {
         if let cell = cell as? PhotoThumbnailCollectionViewCell,
                 let url = URL(string: homeViewModel.getPhotoUrl(index: indexPath.row)) {
             cell.image.sd_setImage(
-                with: url, placeholderImage: UIImage(named: "500px_mark_light"),
-                options: .continueInBackground,
+                with: url,
                 completed: { (image: UIImage?, error: Error?, cacheType: SDImageCacheType, requestUrl:URL?) in
                 cell.imageObj = image
             })
