@@ -45,13 +45,14 @@ class PhotoServiceImpl: PhotoService {
             guard let id = photoJson["id"] as? Int64,
                 let name = photoJson["name"] as? String,
                 let imageUrls = photoJson["image_url"] as? [String],
+                let userJson = photoJson["user"] as? [String: Any],
+                let user = userJson["fullname"] as? String,
                 let imageUrl = imageUrls.last,
                 let width = photoJson["width"] as? Int,
                 let height = photoJson["height"] as? Int else {
                 continue
             }
-            let desc = photoJson["description"] as? String
-            let photo = Photo(id: id, name: name, desc: desc, imageUrl: imageUrl, width: width, height: height)
+            let photo = Photo(id: id, name: name, user: user, imageUrl: imageUrl, width: width, height: height)
             parsedPhotos.append(photo)
         }
         return parsedPhotos

@@ -11,6 +11,8 @@ protocol HomeViewModel {
     
     func getPhotoName(index: Int) -> String
     
+    func getAuthorName(index: Int) -> String
+    
     func refreshPhotos()
     
     func loadMorePhotos()
@@ -52,6 +54,10 @@ class HomeViewModelImpl: NSObject, HomeViewModel {
     
     func getPhotoName(index: Int) -> String {
         return index < photos.count ? photos[index].name : ""
+    }
+    
+    func getAuthorName(index: Int) -> String {
+        return index < photos.count ? photos[index].user : ""
     }
     
     func refreshPhotos() {

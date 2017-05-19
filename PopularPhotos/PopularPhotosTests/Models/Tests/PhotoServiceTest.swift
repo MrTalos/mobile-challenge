@@ -48,7 +48,9 @@ class PhotoServiceTest: XCTestCase {
         photoService.getPhotos(feature: "popular", page: 1, exclude: nil) { (photos: [Photo]) in
             XCTExpectEqual(actual: photos.count, expected: 25)
             XCTExpectEqual(actual: photos[0].id, expected: 212189651)
+            XCTExpectEqual(actual: photos[5].name, expected: "A Stormy Morning")
             XCTExpectEqual(actual: photos[22].id, expected: 212184499)
+            XCTExpectEqual(actual: photos[24].user, expected: "Alessio Albi")
         }
         
         mockService.mock = [

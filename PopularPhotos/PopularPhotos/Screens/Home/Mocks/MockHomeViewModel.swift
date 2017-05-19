@@ -29,6 +29,10 @@ class MockHomeViewModel: HomeViewModel {
         return mock[index]
     }
     
+    func getAuthorName(index: Int) -> String {
+        return mock[index]
+    }
+    
     func refreshPhotos() {
         refreshPhotosCallback()
     }

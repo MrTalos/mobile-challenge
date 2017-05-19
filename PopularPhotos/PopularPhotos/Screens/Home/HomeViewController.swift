@@ -196,11 +196,15 @@ extension HomeCollectionViewController: GalleryDisplacedViewsDataSource {
             startIndex: indexPath.row,
             itemsDataSource: FullscreenViewModelImpl(photoSource: homeViewModel),
             displacedViewsDataSource: self,
-            configuration: [.deleteButtonMode(.none), .thumbnailsButtonMode(.none)])
+            configuration: [.deleteButtonMode(.none),
+                            .thumbnailsButtonMode(.none),
+                            .headerViewLayout(.pinLeft(25, 10)),
+                            .footerViewLayout(.pinRight(25, 10))])
         
         fullscreenViewController!.landedPageAtIndexCompletion = { (page: Int) in
             self.keepPhotoCellInVisibleRange(index: page)
             self.loadMorePhotosIfAlmostReachingEnd(index: page)
+            self.setupFullscreenLabels(index: page)
         }
         
         fullscreenViewController!.closedCompletion = {
@@ -225,6 +229,28 @@ extension HomeCollectionViewController: GalleryDisplacedViewsDataSource {
     func loadMorePhotosIfAlmostReachingEnd(index: Int) {
         if homeViewModel.getPhotosCount() - index < 5, !homeViewModel.isLoading() {
             homeViewModel.loadMorePhotos()
+        }
+    }
+    
+    private func setupFullscreenLabels(index: Int) {
+        let create: (UIColor) -> UILabel = { (color: UIColor) in
+            let label = UILabel()
+            label.textColor = color
+            return label
+        }
+        let updateNames = { (header: UILabel, footer: UILabel) in
+            header.text = self.homeViewModel.getPhotoName(index: index)
+            footer.text = self.homeViewModel.getAuthorName(index: index)
+        }
+        if let header = fullscreenViewController?.headerView as? UILabel,
+            let footer = fullscreenViewController?.footerView as? UILabel {
+            updateNames(header, footer)
+        } else {
+            let header = create(UIColor.white)
+            let footer = create(UIColor.lightGray)
+            fullscreenViewController?.headerView = header
+            fullscreenViewController?.footerView = footer
+            updateNames(header, footer)
         }
     }
     

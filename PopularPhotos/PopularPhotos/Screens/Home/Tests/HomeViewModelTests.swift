@@ -19,7 +19,7 @@ class HomeViewModelTests: XCTestCase {
     
     private func createMockPhotos(quantity: Int) -> [Photo] {
         return (0..<quantity).map {
-            Photo(id: Int64($0), name: "anyname", desc: nil, imageUrl: "anyurl", width: $0*3, height: $0*2)
+            Photo(id: Int64($0), name: "anyname", user: "fullname", imageUrl: "anyurl", width: $0*3, height: $0*2)
         }
     }
     
