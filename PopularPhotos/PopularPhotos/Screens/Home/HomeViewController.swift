@@ -69,8 +69,7 @@ class HomeCollectionViewController: UICollectionViewController {
         setupLayout()
         setupViewModel()
         setupPullToRefresh()
-        let test = LogoAnimation(maskingView: collectionView)
-        self.view.addSubviewWithDefaultConstraints(test)
+        LaunchLogoAnimation.startLogoTransition(rootView: self.view, targetView: self.collectionView)
     }
     
     private func setupLayout() {
@@ -234,7 +233,7 @@ extension HomeCollectionViewController: GalleryDisplacedViewsDataSource {
     }
     
     private func setupFullscreenLabels(index: Int) {
-        let create: (UIColor) -> UILabel = { (color: UIColor) in
+        let create: (UIColor) -> UILabel = { (color) in
             let label = UILabel()
             label.textColor = color
             return label
@@ -247,8 +246,8 @@ extension HomeCollectionViewController: GalleryDisplacedViewsDataSource {
             let footer = fullscreenViewController?.footerView as? UILabel {
             updateNames(header, footer)
         } else {
-            let header = create(UIColor.white)
-            let footer = create(UIColor.lightGray)
+            let header = create(ThemeColor.appWhite)
+            let footer = create(ThemeColor.userNameColor)
             fullscreenViewController?.headerView = header
             fullscreenViewController?.footerView = footer
             updateNames(header, footer)
