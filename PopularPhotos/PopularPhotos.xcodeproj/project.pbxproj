@@ -12,7 +12,6 @@
 		610783341ECBE9D400785813 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610783331ECBE9D400785813 /* HTTPService.swift */; };
 		6107833D1ECBEA2800785813 /* MockHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6107833B1ECBEA2800785813 /* MockHTTPService.swift */; };
 		61093B351ECD0CFF0031662E /* MockHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B2F1ECD0CFF0031662E /* MockHomeViewModel.swift */; };
-		61093B3E1ECD519E0031662E /* FullscreenPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B3D1ECD519E0031662E /* FullscreenPhoto.swift */; };
 		61093B401ECD5FCF0031662E /* MockHomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B3F1ECD5FCF0031662E /* MockHomeViewModelDelegate.swift */; };
 		61093B421ECD60170031662E /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61093B411ECD60170031662E /* HomeViewModelTests.swift */; };
 		61093B431ECD68A10031662E /* GetPhotosSuccessJson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 617295131ECC052400F5D5BA /* GetPhotosSuccessJson.txt */; };
@@ -29,6 +28,10 @@
 		6172951D1ECC19F100F5D5BA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172951A1ECC19F100F5D5BA /* HomeViewController.swift */; };
 		6172951E1ECC19F100F5D5BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172951B1ECC19F100F5D5BA /* HomeViewModel.swift */; };
 		6172951F1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172951C1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift */; };
+		61B5BBFD1ECE79FD00D11E3B /* HomeCollectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5BBFC1ECE79FD00D11E3B /* HomeCollectionViewControllerTests.swift */; };
+		61E47E101ECE5FB500DA9CC2 /* FullscreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E47E0F1ECE5FB500DA9CC2 /* FullscreenViewModel.swift */; };
+		61E47E121ECE683A00DA9CC2 /* DisplaceableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E47E111ECE683A00DA9CC2 /* DisplaceableView.swift */; };
+		AB3727C577337B513B83EB6E /* Pods_shared_pods_PopularPhotosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEFFDFB3435AF723F671F7B /* Pods_shared_pods_PopularPhotosTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +52,6 @@
 		6107833B1ECBEA2800785813 /* MockHTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHTTPService.swift; sourceTree = "<group>"; };
 		6107833E1ECBEDE800785813 /* Pods_PopularPhotos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_PopularPhotos.framework; path = "../../../Library/Developer/Xcode/DerivedData/PopularPhotos-gmqlofbdqcbkalfwljpdbcjqnkmt/Build/Products/Debug-iphonesimulator/Pods_PopularPhotos.framework"; sourceTree = "<group>"; };
 		61093B2F1ECD0CFF0031662E /* MockHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeViewModel.swift; sourceTree = "<group>"; };
-		61093B3D1ECD519E0031662E /* FullscreenPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenPhoto.swift; sourceTree = "<group>"; };
 		61093B3F1ECD5FCF0031662E /* MockHomeViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		61093B411ECD60170031662E /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		61677B361ECBE7BB00D4260A /* PopularPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,10 @@
 		6172951A1ECC19F100F5D5BA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6172951B1ECC19F100F5D5BA /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6172951C1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
+		61B5BBFC1ECE79FD00D11E3B /* HomeCollectionViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewControllerTests.swift; sourceTree = "<group>"; };
+		61E47E0F1ECE5FB500DA9CC2 /* FullscreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewModel.swift; sourceTree = "<group>"; };
+		61E47E111ECE683A00DA9CC2 /* DisplaceableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaceableView.swift; sourceTree = "<group>"; };
+		7EEFFDFB3435AF723F671F7B /* Pods_shared_pods_PopularPhotosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shared_pods_PopularPhotosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91543E9A0DDBD639FBA45203 /* Pods-shared_pods-PopularPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotos.release.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotos/Pods-shared_pods-PopularPhotos.release.xcconfig"; sourceTree = "<group>"; };
 		ACA19C078241BC0BA2AA5F99 /* Pods-shared_pods-PopularPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotos.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotos/Pods-shared_pods-PopularPhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		FE69E4D29D8CA593FA9D0E4B /* Pods-shared_pods-PopularPhotosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shared_pods-PopularPhotosTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-shared_pods-PopularPhotosTests/Pods-shared_pods-PopularPhotosTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3727C577337B513B83EB6E /* Pods_shared_pods_PopularPhotosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				61093B411ECD60170031662E /* HomeViewModelTests.swift */,
+				61B5BBFC1ECE79FD00D11E3B /* HomeCollectionViewControllerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -175,7 +183,7 @@
 		61093B3C1ECD51880031662E /* PhotoDetail */ = {
 			isa = PBXGroup;
 			children = (
-				61093B3D1ECD519E0031662E /* FullscreenPhoto.swift */,
+				61E47E0F1ECE5FB500DA9CC2 /* FullscreenViewModel.swift */,
 			);
 			path = PhotoDetail;
 			sourceTree = "<group>";
@@ -269,6 +277,7 @@
 				6172951A1ECC19F100F5D5BA /* HomeViewController.swift */,
 				6172951B1ECC19F100F5D5BA /* HomeViewModel.swift */,
 				6172951C1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift */,
+				61E47E111ECE683A00DA9CC2 /* DisplaceableView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 			children = (
 				6107833E1ECBEDE800785813 /* Pods_PopularPhotos.framework */,
 				5C5266BE5F5ADB9467A62B9D /* Pods_shared_pods_PopularPhotos.framework */,
+				7EEFFDFB3435AF723F671F7B /* Pods_shared_pods_PopularPhotosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -498,7 +508,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61093B3E1ECD519E0031662E /* FullscreenPhoto.swift in Sources */,
 				617294F61ECBF5B300F5D5BA /* PhotoService.swift in Sources */,
 				6172951F1ECC19F100F5D5BA /* PhotoThumbnailCollectionViewCell.swift in Sources */,
 				617294F51ECBF5B300F5D5BA /* Photo.swift in Sources */,
@@ -507,7 +516,9 @@
 				617295051ECBF73C00F5D5BA /* Localization.swift in Sources */,
 				61677B3A1ECBE7BB00D4260A /* AppDelegate.swift in Sources */,
 				6172951D1ECC19F100F5D5BA /* HomeViewController.swift in Sources */,
+				61E47E121ECE683A00DA9CC2 /* DisplaceableView.swift in Sources */,
 				610783321ECBE98900785813 /* APIGeneral.swift in Sources */,
+				61E47E101ECE5FB500DA9CC2 /* FullscreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61093B351ECD0CFF0031662E /* MockHomeViewModel.swift in Sources */,
+				61B5BBFD1ECE79FD00D11E3B /* HomeCollectionViewControllerTests.swift in Sources */,
 				61093B421ECD60170031662E /* HomeViewModelTests.swift in Sources */,
 				617294D91ECBF02F00F5D5BA /* TestHelper.swift in Sources */,
 				61093B401ECD5FCF0031662E /* MockHomeViewModelDelegate.swift in Sources */,

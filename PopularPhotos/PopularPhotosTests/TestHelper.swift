@@ -26,6 +26,14 @@ func XCTExpectEqual<T: Equatable>(actual: T?, expected: T?) {
     XCTAssert(actual == expected, "Actual: \(String(describing: actual))")
 }
 
+func fulfill(_ expectation: inout XCTestExpectation?) {
+    guard let exp = expectation else {
+        return
+    }
+    exp.fulfill()
+    expectation = nil
+}
+
 extension XCTestCase {
     func getData(fromFile fileName: String, _ type: String) -> Data? {
         let bundle = Bundle(for: type(of: self))

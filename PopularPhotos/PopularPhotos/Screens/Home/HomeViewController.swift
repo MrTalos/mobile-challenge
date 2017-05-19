@@ -3,7 +3,7 @@ import UIKit
 
 import ESPullToRefresh
 import GreedoLayout
-import NYTPhotoViewer
+import ImageViewer
 import SDWebImage
 
 protocol HomeViewModelDelegate {
@@ -58,7 +58,11 @@ class HomeCollectionViewController: UICollectionViewController {
     
     var homeViewModel: HomeViewModel!
     
-    weak var focusedFullscreen: FullscreenPhoto?
+    var fullscreenViewController: GalleryViewController?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,9 +110,8 @@ class HomeCollectionViewController: UICollectionViewController {
         layout.clearCache()
         collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
         
-        if let fullscreen = focusedFullscreen {
-            let index = IndexPath(row: fullscreen.index, section: 0)
-            collectionView.scrollToItem(at: index, at: .centeredVertically, animated: true)
+        if let fullscreenViewController = fullscreenViewController {
+            keepPhotoCellInVisibleRange(index: fullscreenViewController.currentIndex)
         }
     }
     
@@ -158,8 +161,7 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let test = layout.sizeForPhoto(at: indexPath)
-        return test
+        return layout.sizeForPhoto(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -187,27 +189,43 @@ extension HomeCollectionViewController: GreedoCollectionViewLayoutDataSource {
     
 }
 
-extension HomeCollectionViewController: NYTPhotosViewControllerDelegate {
-    
-    // MARK: - NYTPhoto related
+extension HomeCollectionViewController: GalleryDisplacedViewsDataSource {
     
     fileprivate func displayPhoto(indexPath: IndexPath) {
-        guard let cell = collectionView?.cellForItem(at: indexPath) as? PhotoThumbnailCollectionViewCell,
-                let loadedImage = cell.imageObj else {
-            return
+        fullscreenViewController = GalleryViewController(
+            startIndex: indexPath.row,
+            itemsDataSource: FullscreenViewModelImpl(photoSource: homeViewModel),
+            displacedViewsDataSource: self,
+            configuration: [.deleteButtonMode(.none), .thumbnailsButtonMode(.none)])
+        
+        fullscreenViewController!.landedPageAtIndexCompletion = { (page: Int) in
+            self.keepPhotoCellInVisibleRange(index: page)
+            self.loadMorePhotosIfAlmostReachingEnd(index: page)
         }
-        let detailed = FullscreenPhoto(image: loadedImage, index: indexPath.row,
-                                       info: homeViewModel.getPhotoName(index: indexPath.row))
-        let photosViewController = NYTPhotosViewController(photos: [detailed], initialPhoto: detailed, delegate: self)
-        present(photosViewController, animated: true, completion: nil)
-        focusedFullscreen = detailed
+        
+        fullscreenViewController!.closedCompletion = {
+            self.fullscreenViewController = nil
+        }
+        
+        self.presentImageGallery(fullscreenViewController!, completion: nil)
     }
     
-    func photosViewController(_ photosViewController: NYTPhotosViewController, referenceViewFor photo: NYTPhoto) -> UIView? {
-        guard let photo = photo as? FullscreenPhoto else {
+    func provideDisplacementItem(atIndex index: Int) -> DisplaceableView? {
+        guard let cell = collectionView?.cellForItem(at: IndexPath(row: index, section: 0)) as? PhotoThumbnailCollectionViewCell else {
             return nil
         }
-        return collectionView?.cellForItem(at: IndexPath(row: photo.index, section: 0))
+        return cell.image
+    }
+    
+    func keepPhotoCellInVisibleRange(index: Int) {
+        let index = IndexPath(row: index, section: 0)
+        collectionView?.scrollToItem(at: index, at: .centeredVertically, animated: true)
+    }
+    
+    func loadMorePhotosIfAlmostReachingEnd(index: Int) {
+        if homeViewModel.getPhotosCount() - index < 5, !homeViewModel.isLoading() {
+            homeViewModel.loadMorePhotos()
+        }
     }
     
 }

@@ -96,4 +96,28 @@ class HomeViewModelTests: XCTestCase {
         XCTExpectEqual(actual: mockPhotoService.fetchAndClearPageCalled(), expected: 1)
     }
     
+    func testItHandlesBadConnectionWhenReloadComesInFaster() {
+        weak var asyncPromise = expectation(description: "async")
+        let reloadPhotos = createMockPhotos(quantity: 15)
+        let loadMorePhotos = createMockPhotos(quantity: 25)
+        mockPhotoService.mock = reloadPhotos
+        homeViewModel.refreshPhotos()
+        mockPhotoService.mock = loadMorePhotos
+        homeViewModel.loadMorePhotos()
+        
+        
+        mockPhotoService.mock = loadMorePhotos
+        mockPhotoService.asyncCallback = {
+            fulfill(&asyncPromise)
+            XCTExpectEqual(actual: self.homeViewModel.getPhotosCount(), expected: reloadPhotos.count)
+        }
+        homeViewModel.loadMorePhotos()
+        
+        mockPhotoService.mock = reloadPhotos
+        mockPhotoService.asyncCallback = nil
+        homeViewModel.refreshPhotos()
+        
+        waitForExpectations(timeout: 0.1, handler: nil)
+    }
+    
 }

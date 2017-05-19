@@ -7,6 +7,12 @@ class MockHomeViewModel: HomeViewModel {
     
     var mock: [String]!
     
+    var refreshPhotosCallback = {}
+    
+    var loadMorePhotosCallback = {}
+    
+    var mockLoading = false
+    
     func getPhotosCount() -> Int {
         return mock.count
     }
@@ -24,10 +30,14 @@ class MockHomeViewModel: HomeViewModel {
     }
     
     func refreshPhotos() {
-        
+        refreshPhotosCallback()
     }
     
     func loadMorePhotos() {
-        
+        loadMorePhotosCallback()
+    }
+    
+    func isLoading() -> Bool {
+        return mockLoading
     }
 }

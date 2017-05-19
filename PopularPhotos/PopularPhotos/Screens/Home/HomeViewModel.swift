@@ -15,6 +15,8 @@ protocol HomeViewModel {
     
     func loadMorePhotos()
     
+    func isLoading() -> Bool
+    
 }
 
 class HomeViewModelImpl: NSObject, HomeViewModel {
@@ -25,6 +27,7 @@ class HomeViewModelImpl: NSObject, HomeViewModel {
     
     var photos: [Photo] = []
     var loadedPage = 0
+    private var loading = false
     
     init(feature: String, delegate: HomeViewModelDelegate, service: PhotoService = PhotoServiceImpl.instance) {
         self.feature = feature
@@ -58,8 +61,10 @@ class HomeViewModelImpl: NSObject, HomeViewModel {
     
     func loadMorePhotos() {
         let page = loadedPage + 1
+        loading = true
         service.getPhotos(feature: feature, page: page, exclude: "Nude") { [weak self] (photos: [Photo]) in
-            if let ref = self, photos.count > 0, page < ref.loadedPage + 2 {
+            if let ref = self {
+                ref.loading = false
                 let oldSize = ref.photos.count
                 if page == 1 {
                     ref.delegate.refreshDidEnd()
@@ -69,7 +74,7 @@ class HomeViewModelImpl: NSObject, HomeViewModel {
                 } else {
                     ref.delegate.loadingMoreDidEnd()
                 }
-                if photos.count > 0 {
+                if photos.count > 0, page < ref.loadedPage + 2 {
                     let currentIndex = ref.photos.count
                     ref.loadedPage = page
                     ref.photos = ref.photos + photos
@@ -79,6 +84,10 @@ class HomeViewModelImpl: NSObject, HomeViewModel {
                 }
             }
         }
+    }
+    
+    func isLoading() -> Bool {
+        return loading
     }
     
 }
