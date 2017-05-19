@@ -69,6 +69,8 @@ class HomeCollectionViewController: UICollectionViewController {
         setupLayout()
         setupViewModel()
         setupPullToRefresh()
+        let test = LogoAnimation(maskingView: collectionView)
+        self.view.addSubviewWithDefaultConstraints(test)
     }
     
     private func setupLayout() {

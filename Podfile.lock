@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.4.0)
   - ESPullToRefresh (2.6)
+  - FLAnimatedImage (1.0.12)
   - GreedoLayout (1.2.0)
   - ImageViewer (4.1.0)
   - SDWebImage (3.8.2):
@@ -10,6 +11,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4.0)
   - ESPullToRefresh (~> 2.6.0)
+  - FLAnimatedImage (~> 1.0)
   - GreedoLayout (from `https://github.com/zaully/greedo-layout-for-ios.git`, commit `c4cf3c29076bf2277cbbcb3d439ab98a0f9aeb70`)
   - ImageViewer (~> 4.1.0)
   - SDWebImage (~> 3.8.2)
@@ -27,10 +29,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   ESPullToRefresh: 85f4990acf87f78c6a1466bbbee7a75d7de24db9
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   GreedoLayout: b1a1adc6ed5f281353225e3eb21d18cedee8e513
   ImageViewer: 163e5832e0a09e31a3e3482cce6e5e9029356174
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 79cf3262cf40cd530853066c0e306d89753fd4d6
+PODFILE CHECKSUM: 92a4e9bc622d965422431a440f95978af9644526
 
 COCOAPODS: 1.2.1

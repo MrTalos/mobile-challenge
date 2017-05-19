@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogoAnimation" customModule="PopularPhotos" customModuleProvider="target">
+            <connections>
+                <outlet property="calculator" destination="U8o-kp-Yks" id="2yL-Dg-ITp"/>
+                <outlet property="logo" destination="g2w-FO-saP" id="wZq-ya-K6q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veI-yf-7EN">
+                    <rect key="frame" x="0.0" y="221" width="400" height="225"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2w-FO-saP" customClass="FLAnimatedImageView">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="224.5"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="veI-yf-7EN" secondAttribute="height" multiplier="96:54" id="I7O-Zj-oMd"/>
+                        <constraint firstAttribute="trailing" secondItem="g2w-FO-saP" secondAttribute="trailing" id="SQm-T5-NyL"/>
+                        <constraint firstAttribute="bottom" secondItem="g2w-FO-saP" secondAttribute="bottom" constant="0.5" id="aXC-MK-lu0"/>
+                        <constraint firstItem="g2w-FO-saP" firstAttribute="leading" secondItem="veI-yf-7EN" secondAttribute="leading" id="sfy-3y-g3r"/>
+                        <constraint firstItem="g2w-FO-saP" firstAttribute="top" secondItem="veI-yf-7EN" secondAttribute="top" id="tt6-Tl-u5S"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U8o-kp-Yks">
+                    <rect key="frame" x="141.5" y="275" width="92.5" height="116.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="U8o-kp-Yks" secondAttribute="height" multiplier="476:600" id="Wpc-XJ-7NP"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="veI-yf-7EN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KuI-gS-avw"/>
+                <constraint firstItem="U8o-kp-Yks" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QdA-4m-UcJ"/>
+                <constraint firstItem="veI-yf-7EN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tdd-SW-RKT"/>
+                <constraint firstItem="U8o-kp-Yks" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="d1i-cj-5hM"/>
+                <constraint firstItem="veI-yf-7EN" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1.0667" id="qGn-rv-W20"/>
+                <constraint firstItem="U8o-kp-Yks" firstAttribute="height" secondItem="veI-yf-7EN" secondAttribute="height" multiplier="0.52" id="zhk-ST-96g"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
