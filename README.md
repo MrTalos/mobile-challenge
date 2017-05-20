@@ -1,6 +1,30 @@
 # Mobile Developer Coding Challenge
 
-This is a coding challenge for prospective mobile developer applicants applying through https://about.500px.com/jobs/ 
+This is the app I made for the Mobile Developer coding challenge.
+
+## Screen captures:
+#### Pull to refresh
+![](https://github.com/MrTalos/mobile-challenge/blob/master/screencaptures/pull-to-refresh.gif)
+
+#### Infinite scrolling
+![](https://github.com/MrTalos/mobile-challenge/blob/master/screencaptures/infinite-scroll.gif)
+
+#### Fullscreen and Track Positions
+![](https://github.com/MrTalos/mobile-challenge/blob/master/screencaptures/full-screen-and-track-image-position.gif)
+
+
+## Setup:
+
+#### setup cocoapods libraries
+run```pod install``` in the root directory.
+
+you might need to update your cocoapods if you can't find the specified versions of libraries by running
+
+```pod update```
+
+open ```PopularPhotos.xcworkspace``` and compile **PopularPhotos**!
+
+Tests are included in **PopularPhotosTests** target.
 
 ## Goal:
 
