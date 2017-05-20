@@ -29,6 +29,10 @@ class MockHomeViewModel: HomeViewModel {
         return mock[index]
     }
     
+    func getRating(index: Int) -> Double {
+        return 99
+    }
+    
     func getAuthorName(index: Int) -> String {
         return mock[index]
     }

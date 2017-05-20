@@ -239,7 +239,8 @@ extension HomeCollectionViewController: GalleryDisplacedViewsDataSource {
             return label
         }
         let updateNames = { (header: UILabel, footer: UILabel) in
-            header.text = self.homeViewModel.getPhotoName(index: index)
+            let rating = String.init(format: " (%.1f)", self.homeViewModel.getRating(index: index))
+            header.text = self.homeViewModel.getPhotoName(index: index) + rating
             footer.text = self.homeViewModel.getAuthorName(index: index)
         }
         if let header = fullscreenViewController?.headerView as? UILabel,

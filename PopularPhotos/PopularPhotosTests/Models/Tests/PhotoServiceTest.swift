@@ -49,6 +49,7 @@ class PhotoServiceTest: XCTestCase {
             XCTExpectEqual(actual: photos.count, expected: 25)
             XCTExpectEqual(actual: photos[0].id, expected: 212189651)
             XCTExpectEqual(actual: photos[5].name, expected: "A Stormy Morning")
+            XCTExpectEqual(actual: photos[13].rating, expected: 99.7)
             XCTExpectEqual(actual: photos[22].id, expected: 212184499)
             XCTExpectEqual(actual: photos[24].user, expected: "Alessio Albi")
         }

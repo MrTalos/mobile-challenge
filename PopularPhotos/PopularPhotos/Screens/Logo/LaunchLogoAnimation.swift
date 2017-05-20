@@ -15,15 +15,16 @@ enum LaunchLogoAnimation {
         
         logo.animateDidEnd = { (mask: CALayer) in
             
-            UIView.animate(withDuration: 0.8, animations: { 
+            UIView.animate(withDuration: 0.5, animations: {
                 logo.alpha = 0
             }, completion: { (result: Bool) in
-                caAnimate(duration: 0.5, animate: {
-                    mask.transform = CATransform3DMakeScale(300, 300, 1)
+                caAnimate(duration: 2,
+                          animate: {
+                    mask.transform = CATransform3DMakeScale(500, 500, 1)
                 }, onComplete: {
                     logo.removeFromSuperview()
                     back.removeFromSuperview()
-                    targetView?.mask = nil
+                    targetView?.layer.mask = nil
                 })
             })
         }

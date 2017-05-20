@@ -18,8 +18,19 @@ class HomeViewModelTests: XCTestCase {
     }
     
     private func createMockPhotos(quantity: Int) -> [Photo] {
+        var defaultJson: [String: Any] = [
+            "name": "anyname",
+            "rating": 95.0,
+            "user": [
+                "fullname": "fullname"
+            ],
+            "image_url": ["anyurl"],
+        ]
         return (0..<quantity).map {
-            Photo(id: Int64($0), name: "anyname", user: "fullname", imageUrl: "anyurl", width: $0*3, height: $0*2)
+            defaultJson["id"] = Int64($0)
+            defaultJson["width"] = $0 * 3
+            defaultJson["height"] = $0 * 2
+            return Photo(photoJson: defaultJson)!
         }
     }
     
